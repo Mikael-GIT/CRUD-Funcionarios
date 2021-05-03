@@ -1,5 +1,7 @@
 package Application;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,8 +18,11 @@ public class Aplicacao {
 		//é o que passamos no persistence.xml
 		
 		EntityManager em = emf.createEntityManager();
-		Pessoa p = em.find(Pessoa.class, 1);
-		System.out.println(p);
+		List<Pessoa> pessoas = em.createQuery("from Pessoa", Pessoa.class).getResultList();
+		for(Pessoa pessoa : pessoas) {
+			System.out.println(pessoa);
+		}
+		
 		em.close();
 		emf.close();
 	}
