@@ -16,13 +16,8 @@ public class Aplicacao {
 		//é o que passamos no persistence.xml
 		
 		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin(); //Iniciando transação com o banco
-		em.persist(p1);
-		em.persist(p2);
-		em.persist(p3);
-		em.getTransaction().commit(); //confirmando alterações que foram feitas
-		System.out.println("Pronto!");
+		Pessoa p = em.find(Pessoa.class, 1);
+		System.out.println(p);
 		em.close();
 		emf.close();
 	}
