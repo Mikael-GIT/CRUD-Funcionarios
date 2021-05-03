@@ -17,14 +17,12 @@ public class Aplicacao {
 		
 		EntityManager em = emf.createEntityManager();
 		
-		//em.getTransaction().begin(); //Iniciando transação com o banco
-		//em.persist(p1);
-		//em.persist(p2);
-		//em.persist(p3);
-		//em.getTransaction().commit(); //confirmando alterações que foram feitas
-		
-		Pessoa p = em.find(Pessoa.class, 2);
-		System.out.println(p);
+		em.getTransaction().begin(); //Iniciando transação com o banco
+		em.persist(p1);
+		em.persist(p2);
+		em.persist(p3);
+		em.getTransaction().commit(); //confirmando alterações que foram feitas
+		System.out.println("Pronto!");
 		em.close();
 		emf.close();
 	}
