@@ -18,11 +18,9 @@ public class Aplicacao {
 		//é o que passamos no persistence.xml
 		
 		EntityManager em = emf.createEntityManager();
-		List<Pessoa> pessoas = em.createQuery("from Pessoa", Pessoa.class).getResultList();
-		for(Pessoa pessoa : pessoas) {
-			System.out.println(pessoa);
-		}
-		
+		Pessoa p = em.find(Pessoa.class, 1);
+		em.remove(p);
+		System.out.println("Registro "+ p.getNome() + " deletado com sucesso!");
 		em.close();
 		emf.close();
 	}
