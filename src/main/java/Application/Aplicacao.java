@@ -1,26 +1,30 @@
 package Application;
 
 import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import Model.Pessoa;
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
+
+import Model.Funcionario;
 
 public class Aplicacao {
 	public static void main(String[] args) {
-		Pessoa p1 = new Pessoa(null, "Mikael Tavares", "mikaeltavares123@hotmail.com");
-		Pessoa p2 = new Pessoa(null, "Matheus Brasil", "matheusbrasil@hotmail.com");
-		Pessoa p3 = new Pessoa(null, "Beatriz Souza", "beatrizssouza@hotmail.com");
+		Funcionario p1 = new Funcionario(null, "Mikael Tavares", "mikaeltavares123@hotmail.com");
+		Funcionario p2 = new Funcionario(null, "Matheus Brasil", "matheusbrasil@hotmail.com");
+		Funcionario p3 = new Funcionario(null, "Beatriz Souza", "beatrizssouza@hotmail.com");
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa"); //o parâmetro
 		//é o que passamos no persistence.xml
 		
 		EntityManager em = emf.createEntityManager();
-		Pessoa p = em.find(Pessoa.class, 1);
-		em.remove(p);
-		System.out.println("Registro "+ p.getNome() + " deletado com sucesso!");
+		List<Funcionario> pessoas = em.createQuery("from Pessoa", Funcionario.class).getResultList();
+		for(Funcionario pessoa : pessoas) {
+			System.out.println(pessoa);
+		}
 		em.close();
 		emf.close();
 	}

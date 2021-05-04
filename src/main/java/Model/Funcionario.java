@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Pessoa implements Serializable {
+public class Funcionario implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -20,11 +20,11 @@ public class Pessoa implements Serializable {
 	@Column(length = 125)
 	private String email;
 	
-	public Pessoa() {
+	public Funcionario() {
 		
 	}
 
-	public Pessoa(Integer id, String nome, String email) {
+	public Funcionario(Integer id, String nome, String email) {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
@@ -66,7 +66,7 @@ public class Pessoa implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pessoa other = (Pessoa) obj;
+		Funcionario other = (Funcionario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -76,7 +76,7 @@ public class Pessoa implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + "]";
 	}
 	
 	
